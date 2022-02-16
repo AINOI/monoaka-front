@@ -1,0 +1,165 @@
+#login {
+  background: #474746 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .whiteboard {
+    height: 500px;
+    width: 800px;
+    background: white;
+    border-radius: 15px;
+    filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.5));
+    position: relative;
+    .border-r {
+      border-right: 3px solid rgba(0,0,0,0.3) !important;
+    }
+  }
+  .homebtn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background-color: $third;
+      z-index: 5;
+      &:hover {
+        background: $third-hover;
+      }
+  }
+  .login-fs {
+    font-size: 24px !important;
+  }
+  button {
+    width: 150px;
+    height: 50px;
+    background: $wood;
+    border: none;
+    color: white;
+    font-size: 24px;
+    border-radius:15px;
+    transition: 0.5s;
+    &:hover {
+      background:$wood-hover ;
+    }
+  }
+  * {
+    font-weight: bolder;
+    color: $font-primary;
+  }
+}
+
+#loginside {
+  margin-top: 0;
+  height: 50%;
+  .col-12 {
+    display: flex;
+    justify-content: center;
+    .reAndLogbtn {
+      background: transparent;
+      color: $font-primary;
+      border:none;
+      font-size: 24px;
+      width: 200px;
+      height: 50px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      transition: 0.5s;
+      &:hover {
+        border-bottom: 2px solid rgba(0,0,0,0.3);
+      }
+    }
+    .reAndLogbtn-link {
+      background: transparent;
+      color: $font-primary;
+      border:none;
+      font-size: 24px;
+      width: 200px;
+      height: 50px;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      transition: 0.5s;
+      text-decoration: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      &:hover {
+        border-bottom: 2px solid rgba(0,0,0,0.3);
+      }
+    }
+  }
+}
+
+#register {
+  background: #474746 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #474746 !important;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .whiteboard {
+    height: 500px;
+    width: 800px;
+    background: white;
+    border-radius: 15px;
+    filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.5));
+    position: relative;
+    .border-r {
+      border-right: 3px solid rgba(0,0,0,0.3) !important;
+    }
+  }
+  .homebtn {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 10px;
+      background-color: $third;
+      z-index: 5;
+      &:hover {
+        background: $third-hover;
+      }
+  }
+  .login-fs {
+    font-size: 24px !important;
+  }
+  button {
+    width: 150px;
+    height: 50px;
+    background: $wood;
+    border: none;
+    color: white;
+    font-size: 24px;
+    border-radius:15px;
+    transition: 0.5s;
+    &:hover {
+      background:$wood-hover ;
+    }
+  }
+  * {
+    font-weight: bolder;
+    color: $font-primary;
+  }
+}
+
+small{
+  margin-left: 1rem;
+  margin-top: 0 !important;
+}
+
+#__BVID__44__BV_feedback_invalid_ {
+    margin-top: 0 !important;
+    margin-left: 1rem !important;
+  }

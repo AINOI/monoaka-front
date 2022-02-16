@@ -1,0 +1,133 @@
+// noto font
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@100;300;400;500;700;900&display=swap');
+
+*::-webkit-scrollbar{
+  width: 16px;
+  background: #f1f1f1;
+}
+*::-webkit-scrollbar-thumb {
+  background: #4F4F4F;
+  border-radius: 8px;
+  height: 56px;
+  border: 4px solid transparent !important;
+  background-clip: content-box;
+}
+
+// color source from 'https://encycolorpedia.com/d3c9b7'
+$primary: #b5a486;
+$second: #B19886;
+$third: 	#66CDAA;
+$third-hover:#54a88c;
+$forth: #f3ede2;
+$coffee: #8B5A2B;
+$wood:#CC9966;
+$wood-hover:#a17951 ;
+$light: #F8F7F4;
+$problem: #CD3333;
+$font-primary: #4F4F4F;
+$font-second: #8B8989;
+$font-white: #ffffff;
+
+// aino-type
+.aino-bg-primary {
+  background: $primary !important;
+}
+.aino-bg-second {
+  background: $second !important;
+}
+.aino-bg-third {
+  background: $third !important;
+}
+.aino-bg-forth {
+  background: $forth !important;
+}
+.aino-bg-coffee {
+  background: $coffee !important;
+}
+.aino-bg-wood {
+  background: $wood !important;
+}
+.aino-bg-problem {
+  background: $problem !important;
+}
+.font-primary {
+  color: $font-primary !important;
+}
+.font-second {
+  color: $font-second !important;
+}
+.font-white {
+  color: $font-white !important;
+}
+
+//btn color
+.aino-btn-primary {
+  background: $primary;
+  color: $font-white;
+  font-size: 2rem;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+
+  &:hover {
+    background: #645139;
+  }
+}
+
+.aino-btn-third{
+  background: $third;
+  color: $font-white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  &:hover {
+    background: $third-hover;
+  }
+}
+
+.aino-btn-wood {
+  background: $wood;
+  color: $font-white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  &:hover {
+    background: $wood-hover;
+  }
+}
+
+//btn size
+.btn-lg {
+  width: 200px;
+  height: 100px;
+}
+
+.btn-md {
+  width: 100px;
+  height: 50px;
+}
+
+//rounded
+.aino-rounded {
+border-radius: 10px !important;
+filter: drop-shadow(3px 5px 4px rgba(0,0,0,0.5));
+}
+
+//font-size
+.aino-fs {
+font-size: 1rem;
+font-weight: bolder;
+}
+
+//gensei-type
+.row {
+margin-top: 1rem;
+margin-left: auto ;
+margin-right: auto ;
+}
+
+body {
+  background: $forth;
+}

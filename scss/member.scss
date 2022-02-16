@@ -1,0 +1,72 @@
+@import 'primary';
+
+.active {
+  background: $third !important;
+  color: $font-white !important;
+}
+.gen {
+  a {
+    color: $font-primary;
+    font-weight: bolder;
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+// home and info
+.img-box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+}
+
+// mnovel
+.novelslistbtn {
+  width: 500px;
+  height: 50px;
+  border: none;
+  color: white;
+  font-size: 30px;
+  transition: 0.5s;
+  position: relative;
+  background: $wood !important;
+  &:hover {
+    background: $wood-hover !important;
+  }
+}
+
+// write
+.novel-cover {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
+}
+
+//list
+  //list-edit
+  #modal-novel {
+    label {
+      font-size: 1rem;
+      font-weight: bolder;
+    }
+    footer {
+      button:nth-child(1) {
+        background: red !important;
+        color: $font-white;
+        font-weight: bolder;
+        border: none;
+        &:hover {
+          background: crimson !important;
+        }
+      }
+      button:nth-child(2) {
+        background: $third !important;
+        color: $font-white;
+        font-weight: bolder;
+        border: none;
+        &:hover {
+          background: $third-hover !important;
+        }
+      }
+    }
+  }
