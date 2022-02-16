@@ -197,6 +197,31 @@ const routes = [
     meta: {
       title: 'Mono‘s Archive | NovelPage'
     }
+  },
+  {
+    path: '/memberothers',
+    name: 'MemberOthers',
+    component: () => import(/* webpackChunkName: "memberothers" */ '../views/memberothers/MemberOthers.vue'),
+    children: [
+      {
+        path: '',
+        name: 'MemberOthersHome',
+        component: () => import(/* webpackChunkName: "member" */ '../views/memberothers/MemberOthersHome.vue'),
+        meta: {
+          login: true,
+          title: 'Mono‘s Archive | 創作者首頁'
+        }
+      },
+      {
+        path: 'memberothersnovels',
+        name: 'MemberOthersNovels',
+        component: () => import(/* webpackChunkName: "member" */ '../views/memberothers/MemberOthersNovels.vue'),
+        meta: {
+          login: true,
+          title: 'Mono‘s Archive | 創作者首頁'
+        }
+      }
+    ]
   }
 ]
 

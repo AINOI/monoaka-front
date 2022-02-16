@@ -2,7 +2,8 @@
 b-container#novelpage.bg-white.aino-rounded
   b-row.mt-5
     b-col.h1.mt-5.bold(cols='12') {{ title }}
-    b-col.font-primary.h3(cols='12') 作者: {{ author }}
+    b-col.font-primary.h3(cols='12') 作者:
+      b-link.ml-3(to='/memberothers') {{ author }}
     b-col.font-second.h4(cols='12') 文作分類: {{ novelType }}
     b-col(cols='12' v-if='user.isLogin')
       button.aino-btn-wood.btn-md.mt-3 Like!

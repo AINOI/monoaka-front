@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#memberhome
+b-container#memberothershome
   b-row
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 創作者資訊
   b-row.mt-5.border-bottom
@@ -16,41 +16,5 @@ b-container#memberhome
           div.h4(v-if='user.birthdayMon !== 13 || user.birthdayDate !== 32') 生日: {{ user.birthdayMon }} 月 {{ user.birthdayDate }} 日
           div.h4(v-if='user.birthdayMon === 13 && user.birthdayDate === 32') 生日: 不讓你看 キラー☆
           div.h4 性別: {{ user.sex }}
-          b-btn.aino-btn-third(to='/member/memberinfo' v-if='user.isLogin') 資訊內容更新
-  b-row.mt-5
-    b-col.h3(cols='12') 作品總數： 12 {{ novelslike }} 篇
-  b-row
-    b-col(cols='12' v-for='novel in novels' :key='novel._id')
-        NovelsCard(:novel='novel')
+          b-btn.aino-btn-third(to='' v-if='user.isLogin') 加入好友
 </template>
-
-<script>
-import NovelsCard from '../../components/NovelsCard.vue'
-export default {
-  components: {
-    NovelsCard
-  },
-  data () {
-    return {
-      novels: []
-    }
-  },
-  async created () {
-    try {
-      const { data } = await this.api.get('/novels', '/users')
-      this.novels = data.result
-    } catch (error) {
-      this({
-        icon: 'error',
-        title: '錯誤',
-        text: '文作取得失敗'
-      })
-    }
-  }
-}
-</script>
-
-<style lang="scss">
-@import '../../../scss/aino-style.scss';
-
-</style>
