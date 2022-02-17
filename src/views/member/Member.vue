@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#member.mt-5(fluid)
+b-container#member.mt-5.h-100(fluid)
   b-row
     b-col(cols='3')
       div.mx-3.py-3.px-3.aino-rounded.bg-white

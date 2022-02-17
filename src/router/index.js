@@ -199,7 +199,7 @@ const routes = [
     }
   },
   {
-    path: '/memberothers',
+    path: '/memberothers/:id',
     name: 'MemberOthers',
     component: () => import(/* webpackChunkName: "memberothers" */ '../views/memberothers/MemberOthers.vue'),
     children: [
@@ -208,7 +208,6 @@ const routes = [
         name: 'MemberOthersHome',
         component: () => import(/* webpackChunkName: "member" */ '../views/memberothers/MemberOthersHome.vue'),
         meta: {
-          login: true,
           title: 'Mono‘s Archive | 創作者首頁'
         }
       },
@@ -217,7 +216,6 @@ const routes = [
         name: 'MemberOthersNovels',
         component: () => import(/* webpackChunkName: "member" */ '../views/memberothers/MemberOthersNovels.vue'),
         meta: {
-          login: true,
           title: 'Mono‘s Archive | 創作者首頁'
         }
       }

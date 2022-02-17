@@ -4,17 +4,51 @@ b-container#memberothershome
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 創作者資訊
   b-row.mt-5.border-bottom
     b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='3') 創作者頭貼
-        img.mt-3.img-box(:src='user.avatarimg' )
+        img.mt-3.img-box(:src='this.avatarimg' )
     b-col.pl-5.mb-5.text-white.aino-rounded.aino-bg-wood(cols='9')
       b-row.h-100.d-flex.mx-0.mt-3
         b-col.d-flex.flex-column(cols='12')
-          div.h3(v-if='user.nickname') 創作者名稱: {{ user.nickname }}
-          div.h3(v-if='!user.nickname') 創作者名稱: {{ user.account }}
-          div.h4 帳號: {{ user.account }}
-          div.h4(v-if='user.emailswitch === 2') 信箱: 不讓你看 キラー☆
-          div.h4(v-if='user.emailswitch === 1') 信箱: {{ user.email }}
-          div.h4(v-if='user.birthdayMon !== 13 || user.birthdayDate !== 32') 生日: {{ user.birthdayMon }} 月 {{ user.birthdayDate }} 日
-          div.h4(v-if='user.birthdayMon === 13 && user.birthdayDate === 32') 生日: 不讓你看 キラー☆
-          div.h4 性別: {{ user.sex }}
+          div.h3(v-if='this.nickname') 創作者名稱: {{ this.nickname }}
+          div.h3(v-if='!this.nickname') 創作者名稱: {{ this.account }}
+          div.h4 帳號: {{ this.account }}
+          div.h4(v-if='this.emailswitch === 2') 信箱: 不讓你看 キラー☆
+          div.h4(v-if='this.emailswitch === 1') 信箱: {{ this.email }}
+          div.h4(v-if='this.birthdayMon !== 13 || this.birthdayDate !== 32') 生日: {{ this.birthdayMon }} 月 {{ this.birthdayDate }} 日
+          div.h4(v-if='this.birthdayMon === 13 && this.birthdayDate === 32') 生日: 不讓你看 キラー☆
+          div.h4 性別: {{ this.sex }}
           b-btn.aino-btn-third(to='' v-if='user.isLogin') 加入好友
 </template>
+
+<script>
+export default {
+  data () {
+    return {
+      avatarimg: '',
+      nickname: '',
+      account: '',
+      emailswitch: '',
+      email: '',
+      birthdayMon: '',
+      birthdayDate: '',
+      sex: ''
+    }
+  },
+  async created () {
+    try {
+      const { data } = await this.api.get('/users/' + this.$route.params.id)
+      this.avatarimg = data.result.avatarimg
+      this.nickname = data.result.nickname
+      this.account = data.result.account
+      this.emailswitch = data.result.emailswitch
+      this.email = data.result.email
+      this.birthdayMon = data.result.birthdayMon
+      this.birthdayDate = data.result.birthdayDate
+      this.sex = data.result.sex
+      document.title = `Mono‘s Archive | ${this.nickname} 創作者首頁`
+    } catch (error) {
+      console.log(error)
+      this.$router.push('/')
+    }
+  }
+}
+</script>

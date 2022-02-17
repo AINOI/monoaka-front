@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#MRules.mt-5.kiteiheight.h-md-0
+b-container#MRules.my-5.kiteiheight.h-md-0
   b-navbar.d-flex.justify-content-center.mb-4
     b-navbar-nav.h5.d-flex.flex-column.flex-md-row
       b-nav-item.ml-md-5.mt-2.mt-md-0.rulesbtn.aino-rounded(@click='wnovelRule') 創作規則

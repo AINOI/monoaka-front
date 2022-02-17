@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#home.px-0.vh-100(fluid)
+b-container#home.px-0.h-100(fluid)
   b-carousel#carousel-fade(style='text-shadow:0px 0px 2px #000;' controls fade :interval="5000")
     b-carousel-slide(caption='First slide' img-src="https://picsum.photos/1440/400/?image=20")
       b-button.aino-btn-primary.btn-position 了解更多
@@ -15,10 +15,11 @@ b-container#home.px-0.vh-100(fluid)
     b-row.mt-0
       b-col(cols='12' v-for='novel in novels' :key='novel._id')
         NovelsCard(:novel='novel')
-  b-container.copyright(fluid)
-    .h-100.d-flex.justify-content-center.align-items-center
-      b-row
-        b-col.font-white.h3(cols='12') Copyright &copy; 2022 Aino Studio. All rights reserved.
+  footer
+    b-container#copyright.copyright(fluid)
+      .h-100.d-flex.justify-content-center.align-items-center
+        b-row.m-0
+          b-col.font-white.h3(cols='12') Copyright &copy; 2022 Aino Studio. All rights reserved.
 </template>
 
 <style lang="scss">

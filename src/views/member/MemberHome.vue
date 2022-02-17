@@ -18,9 +18,9 @@ b-container#memberhome
           div.h4 性別: {{ user.sex }}
           b-btn.aino-btn-third(to='/member/memberinfo' v-if='user.isLogin') 資訊內容更新
   b-row.mt-5
-    b-col.h3(cols='12') 作品總數： 12 {{ novelslike }} 篇
+    b-col.h3(cols='12') 作品總數: {{ novelsFilterMemberHome.length }} 篇
   b-row
-    b-col(cols='12' v-for='novel in novels' :key='novel._id')
+    b-col(cols='12' v-for='novel in novelsFilterMemberHome' :key='novel._id')
         NovelsCard(:novel='novel')
 </template>
 
@@ -35,9 +35,22 @@ export default {
       novels: []
     }
   },
+  computed: {
+    novelsFilterMemberHome () {
+      return this.novels.filter(item => {
+        if (item.authorId === this.user._id) {
+          return true
+        }
+      })
+    }
+  },
   async created () {
     try {
-      const { data } = await this.api.get('/novels', '/users')
+      const { data } = await this.api.get('/novels/', {
+        headers: {
+          authorization: 'Bearer ' + this.user.token
+        }
+      })
       this.novels = data.result
     } catch (error) {
       this({

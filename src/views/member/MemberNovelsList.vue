@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#membernovelsList.mt-5
-  b-table(striped hover :items='novels' :fields='fields' ref='table')
+  b-table(striped hover :items='novelsFilterMemberNovelsList' :fields='fields' ref='table')
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style="height: 50px;")
     template(#cell(edit)='data')
@@ -111,6 +111,13 @@ export default {
         novelType: this.form.novelType.length === 0 ? null : true,
         text: this.form.text.length === 0 ? null : true
       }
+    },
+    novelsFilterMemberNovelsList () {
+      return this.novels.filter(item => {
+        if (item.authorId === this.user._id) {
+          return true
+        }
+      })
     }
   },
   methods: {
@@ -140,14 +147,14 @@ export default {
               authorization: 'Bearer ' + this.user.token
             }
           })
-          this.novels.push(data.result)
+          this.novelsFilterMemberNovelsList.push(data.result)
         } else {
           const { data } = await this.api.patch('/novels/' + this.form._id, fd, {
             headers: {
               authorization: 'Bearer ' + this.user.token
             }
           })
-          this.novels[this.form.index] = { ...this.form, image: data.result.image }
+          this.novelsFilterMemberNovelsList[this.form.index] = { ...this.form, image: data.result.image }
           this.$refs.table.refresh()
         }
         this.$swal({
@@ -190,7 +197,7 @@ export default {
       //   _id: this.novels[index]._id
       // }
       // or this type
-      this.form = { ...this.novels[index], image: null, index }
+      this.form = { ...this.novelsFilterMemberNovelsList[index], image: null, index }
       this.$bvModal.show('modal-novel')
     }
   },

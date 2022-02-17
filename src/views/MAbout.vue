@@ -13,10 +13,6 @@ b-container#MAbout.mt-5.px-0.h-100.d-flex.justify-content-center.align-items-cen
       b-col.bg-white.py-4.px-4.mb-5.mb-md-0.border-bottom.reverse-bottom(md='8')
         .h3 Mono‘s Archive的由來?
         .h5 123456
-  b-container.copyright(fluid)
-    .h-100.d-flex.justify-content-center.align-items-center
-      b-row
-        b-col.font-white.h3(cols='12') Copyright &copy; 2022 Aino Studio. All rights reserved.
 </template>
 
 <style lang="scss">

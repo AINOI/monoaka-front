@@ -23,6 +23,11 @@
 <script>
 // dispatch = call actions.js
 export default {
+  data () {
+    return {
+      footerSwitch: true
+    }
+  },
   methods: {
     logout () {
       this.$store.dispatch('user/logout')

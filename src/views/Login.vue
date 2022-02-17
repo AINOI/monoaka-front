@@ -67,4 +67,5 @@ export default {
 
 <style lang="scss">
 @import '../../scss/aino-style.scss' ;
+
 </style>

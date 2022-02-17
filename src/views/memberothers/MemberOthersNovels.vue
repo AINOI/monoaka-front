@@ -2,7 +2,7 @@
 b-container#memberothernovels
   b-row
     b-col(cols='12' v-for='novel in novels' :key='novel._id')
-      NovelsCard(:novel='novel')
+        NovelsCard(:novel='novel')
 </template>
 
 <script>
@@ -11,7 +11,8 @@ import NovelsCard from '../../components/NovelsCard.vue'
 export default {
   data () {
     return {
-      novels: []
+      novels: [],
+      user: []
     }
   },
   components: {
@@ -19,14 +20,12 @@ export default {
   },
   async created () {
     try {
-      const { data } = await this.api.get('/novels')
-      this.novels = data.result
+      const { data } = await this.api.get('/users/' + this.$route.params.id)
+      console.log(data)
+      this.user = data.result
+      this.user.tokens = ''
     } catch (error) {
-      this({
-        icon: 'error',
-        title: '錯誤',
-        text: '文作取得失敗'
-      })
+      // this.$router.push('/memberothers')
     }
   }
 }

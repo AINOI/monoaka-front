@@ -31,6 +31,10 @@
             b-form-textarea(v-model='form.text' type='text' required :state='state.text' rows='20')
         b-col(cols='12')
           b-button(@click='publish' :disabled='modalSubmitting') 完成創作
+        b-col(cols='12')
+          div(v-model='form.author' :state='this.user.nickname')
+        b-col(cols='12')
+          div(v-model='form.authorId')
 </template>
 
 <script>
@@ -53,6 +57,7 @@ export default {
         index: -1,
         _id: '',
         author: '',
+        authorId: '',
         publishDate: new Date()
       }
     }
@@ -78,15 +83,17 @@ export default {
         })
         return
       }
+
       this.modalSubmitting = true
 
       const fd = new FormData()
       for (const key in this.form) {
         if (key !== '_id') {
           fd.append(key, this.form[key])
+          this.form.author = this.user.account
+          this.form.authorId = this.user._id
         }
       }
-
       try {
         const { data } = await this.api.post('/novels', fd, {
           headers: {
