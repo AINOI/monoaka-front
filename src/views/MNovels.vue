@@ -4,14 +4,17 @@ b-container#MNovels(fluid)
     b-col.bg-white.rounded(cols='9')
       b-navbar.d-flex.justify-content-center
         b-navbar-nav.h5.w-100.d-flex.justify-content-around
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
-          b-nav-item.aino-novel-rounded 測試標籤
+          b-nav-item.aino-novel-rounded(@click="filter = ''") 全部
+          b-nav-item.aino-novel-rounded(@click="filter = '奇幻'") 奇幻
+          b-nav-item.aino-novel-rounded(@click="filter = '古風'") 古風
+          b-nav-item.aino-novel-rounded(@click="filter = '寫實'") 寫實
+          b-nav-item.aino-novel-rounded(@click="filter = '玄怪'") 玄怪
+          b-nav-item.aino-novel-rounded(@click="filter = '恐怖'") 恐怖
+          b-nav-item.aino-novel-rounded(@click="filter = '愛情'") 愛情
+          b-nav-item.aino-novel-rounded(@click="filter = '科幻'") 科幻
+          b-nav-item.aino-novel-rounded(@click="filter = '同人'") 同人
+          b-nav-item.aino-novel-rounded(@click="filter = '西洋'") 西洋
+          b-nav-item.aino-novel-rounded(@click="filter = '東方'") 東方
     b-col.d-flex.align-items-center(cols='3')
       b-form.w-100
         b-form-group.w-100.mb-0
@@ -25,13 +28,15 @@ b-container#MNovels(fluid)
       b-container#novelslist(fluid)
         b-row
           b-col.mt-3(cols='12')
-            .w-25.h-100.m-0.h1.type.aino-bg-wood
-              | 恐怖
+            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter === ''") 全部
+            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter !== ''") {{ this.filter }}
           b-col.d-flex.justify-content-end(cols='12')
             .overflow-auto
               b-pagination(:per-page='perPage' :total-rows='rows' v-model="currentPage")
-          b-col(cols='12')
-            b-table(:items="items" :per-page="perPage" :current-page="currentPage")
+          b-col(cols='12' v-for='novel in filterType' :key='novel._id')
+            NovelsCard(:novel='novel')
+          //- b-col(cols='12')
+          //-   b-table(:items="items" :per-page="perPage" :current-page="currentPage")
     b-col(cols='3')
       #createrlist
         b-navbar.novels-nav-border
@@ -54,24 +59,43 @@ b-container#MNovels(fluid)
 </template>
 
 <script>
+import NovelsCard from '../components/NovelsCard.vue'
+
 export default {
+  components: {
+    NovelsCard
+  },
   data () {
     return {
       creater: true,
       novelslist: false,
+      filter: '',
       perPage: 3,
       currentPage: 1,
-      items: [
-        { id: 1, first_name: 'Fred', last_name: 'Flintstone' },
-        { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
-        { id: 3, first_name: 'Barney', last_name: 'Rubble' },
-        { id: 4, first_name: 'Betty', last_name: 'Rubble' },
-        { id: 5, first_name: 'Pebbles', last_name: 'Flintstone' },
-        { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
-        { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
-        { id: 8, first_name: 'Rockhead', last_name: 'Slate' },
-        { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
-      ]
+      // items: [
+      //   { id: 1, first_name: 'Fred', last_name: 'Flintstone' },
+      //   { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
+      //   { id: 3, first_name: 'Barney', last_name: 'Rubble' },
+      //   { id: 4, first_name: 'Betty', last_name: 'Rubble' },
+      //   { id: 5, first_name: 'Pebbles', last_name: 'Flintstone' },
+      //   { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
+      //   { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
+      //   { id: 8, first_name: 'Rockhead', last_name: 'Slate' },
+      //   { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
+      // ],
+      novels: [],
+      pageItem: {
+        pageTotal: 0,
+        currentPage: 0,
+        hasPage: true,
+        hasNext: false,
+        showPage: 10,
+        pageCurrent: [],
+        currentPageTag: 1,
+        PageTagTotal: 0,
+        pageTagHasPre: false,
+        pageTagHasNext: false
+      }
     }
   },
   methods: {
@@ -90,7 +114,25 @@ export default {
   },
   computed: {
     rows () {
-      return this.items.length
+      return this.filterType.length
+    },
+    filterType () {
+      return this.novels.filter(item => {
+        if (this.filter === '') return true
+        return item.novelType === this.filter
+      })
+    }
+  },
+  async created () {
+    try {
+      const { data } = await this.api.get('/novels')
+      this.novels = data.result
+    } catch (error) {
+      this({
+        icon: 'error',
+        title: '錯誤',
+        text: '文作取得失敗'
+      })
     }
   }
 }

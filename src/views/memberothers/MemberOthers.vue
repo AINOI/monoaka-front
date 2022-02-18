@@ -29,7 +29,7 @@ export default {
   async created () {
     try {
       const { data } = await this.api.get('/users/' + this.$route.params.id)
-      this.avatarimg = data.result.avatarimg
+      this.avatarimg = data.result.image
       this.nickname = data.result.nickname
       this.account = data.result.account
       this.emailswitch = data.result.emailswitch

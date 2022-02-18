@@ -3,7 +3,7 @@ export const login = (state, data) => {
   state._id = data._id
   state.account = data.account
   state.nickname = data.nickname
-  state.avatarimg = data.avatarimg
+  state.image = data.image
   state.role = data.role
   state.email = data.email
   state.novel = data.novel
@@ -18,7 +18,7 @@ export const logout = (state, data) => {
   state._id = ''
   state.account = ''
   state.nickname = ''
-  state.avatarimg = ''
+  state.image = ''
   state.role = 0
   state.email = ''
   state.emailswitch = ''
@@ -31,7 +31,7 @@ export const getInfo = (state, data) => {
   state._id = data._id
   state.account = data.account
   state.nickname = data.nickname
-  state.avatarimg = data.avatarimg
+  state.image = data.image
   state.role = data.role
   state.email = data.email
   state.novel = data.novel
@@ -43,7 +43,7 @@ export const getInfo = (state, data) => {
 
 export const updateInfo = (state, data) => {
   state.nickname = data.nickname
-  state.avatarimg = data.avatarimg
+  state.image = data.image
   state.novel = data.novel
   state.emailswitch = data.emailswitch
   state.sex = data.sex

@@ -3,11 +3,12 @@ b-container#memberothershome
   b-row
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 創作者資訊
   b-row.mt-5.border-bottom
-    b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='3') 創作者頭貼
-        img.mt-3.img-box(:src='this.avatarimg' )
-    b-col.pl-5.mb-5.text-white.aino-rounded.aino-bg-wood(cols='9')
-      b-row.h-100.d-flex.mx-0.mt-3
-        b-col.d-flex.flex-column(cols='12')
+    b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='3')
+        | 創作者頭貼
+        img.mt-3.img-box.aino-rounded(:src='this.avatarimg' )
+    b-col.pl-5.mb-5(cols='9')
+      b-row.h-100.d-flex.mx-0.my-0
+        b-col.d-flex.flex-column.justify-content-around(cols='12')
           div.h3(v-if='this.nickname') 創作者名稱: {{ this.nickname }}
           div.h3(v-if='!this.nickname') 創作者名稱: {{ this.account }}
           div.h4 帳號: {{ this.account }}
@@ -36,7 +37,7 @@ export default {
   async created () {
     try {
       const { data } = await this.api.get('/users/' + this.$route.params.id)
-      this.avatarimg = data.result.avatarimg
+      this.avatarimg = data.result.image
       this.nickname = data.result.nickname
       this.account = data.result.account
       this.emailswitch = data.result.emailswitch

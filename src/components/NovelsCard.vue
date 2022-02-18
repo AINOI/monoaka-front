@@ -17,3 +17,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss">
+.card-img-left{
+  object-fit: cover !important;
+}
+</style>

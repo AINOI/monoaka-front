@@ -5,6 +5,7 @@ import router from '@/router'
 export const login = async ({ commit }, form) => {
   try {
     const { data } = await api.post('/users/login', form)
+    console.log(data.result)
     commit('login', data.result)
     router.push('/')
     swal.fire({

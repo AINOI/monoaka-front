@@ -42,8 +42,8 @@ export default {
   computed: {
     state () {
       return {
-        account: this.form.account.length === 0 ? null : this.form.account.length >= 4 && this.form.account.length <= 20,
-        password: this.form.password.length === 0 ? null : this.form.password.length >= 4 && this.form.password.length <= 20
+        account: this.form.account.length === 0 ? null : this.form.account.length >= 6 && this.form.account.length <= 20,
+        password: this.form.password.length === 0 ? null : this.form.password.length >= 6 && this.form.password.length <= 20
       }
     }
   },

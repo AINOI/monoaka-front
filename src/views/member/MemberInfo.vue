@@ -147,14 +147,21 @@ export default {
         return
       }
       this.modalSubmitting = true
+      const fd = new FormData()
+      for (const key in this.form) {
+        if (key === 'avatarimg') {
+          fd.append('image', this.form.avatarimg)
+        } else {
+          fd.append(key, this.form[key])
+        }
+      }
       try {
-        await this.api.patch('/users/reinfo', this.form, {
+        const { data } = await this.api.patch('/users/reinfo', fd, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
         })
-        console.log(this.form)
-        this.$store.commit('user/updateInfo', this.form)
+        this.$store.commit('user/updateInfo', data.result)
         this.$swal({
           icon: 'success',
           title: '成功',
