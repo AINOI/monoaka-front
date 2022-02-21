@@ -78,6 +78,16 @@ const routes = [
         }
       },
       {
+        path: 'admincarousel',
+        name: 'AdminCarousel',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/AdminCarousel.vue'),
+        meta: {
+          login: true,
+          admin: true,
+          title: 'Mono‘s Archive | Novels Manager'
+        }
+      },
+      {
         path: 'adminnovels',
         name: 'AdminNovels',
         component: () => import(/* webpackChunkName: "admin" */ '../views/admin/AdminNovels.vue'),

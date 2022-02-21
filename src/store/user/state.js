@@ -3,7 +3,6 @@ export default () => {
     token: '',
     account: '',
     nickname: '',
-    avatarimg: '',
     role: 0,
     email: ''
   }

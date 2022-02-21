@@ -17,7 +17,12 @@
             b-nav-item.ml-md-5(v-if='user.isLogin && user.isAdmin' to='/admin') 管理者頁面
             b-nav-item.ml-md-5(v-if='user.isLogin && !user.isAdmin' to='/member') 創作者頁面
             b-nav-item.ml-md-5(v-if='user.isLogin' @click='logout') 登出
-  router-view
+  router-view.mh-100
+  footer
+    b-container#copyright.copyright(fluid)
+      .h-100.d-flex.justify-content-center.align-items-center
+        b-row.m-0
+          b-col.font-white.h3(cols='12') Copyright &copy; 2022 Aino Studio. All rights reserved.
 </template>
 
 <script>
@@ -42,4 +47,7 @@ export default {
 <style lang="scss">
 @import '../scss/aino-style.scss';
 
+.mh-100{
+  min-height: 100vh;
+}
 </style>

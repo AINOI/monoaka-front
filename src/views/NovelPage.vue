@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#novelpage.bg-white.aino-rounded
+b-container#novelpage.bg-white.aino-rounded.mb-5
   b-row.mt-5
     b-col.h1.mt-5.bold(cols='12') {{ title }}
     b-col.font-primary.h3(cols='12') 作者:
