@@ -11,6 +11,7 @@ export const login = (state, data) => {
   state.sex = data.sex
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
+  state.block = data.block
 }
 
 export const logout = (state, data) => {
@@ -25,6 +26,7 @@ export const logout = (state, data) => {
   state.sex = ''
   state.birthdayMon = ''
   state.birthdayDate = ''
+  state.block = ''
 }
 
 export const getInfo = (state, data) => {
@@ -39,6 +41,7 @@ export const getInfo = (state, data) => {
   state.sex = data.sex
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
+  state.block = data.block
 }
 
 export const updateInfo = (state, data) => {
@@ -49,4 +52,5 @@ export const updateInfo = (state, data) => {
   state.sex = data.sex
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
+  state.block = data.block
 }

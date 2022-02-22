@@ -8,8 +8,8 @@ b-container.mt-5
         b-btn(v-b-modal="'modal-carousel'") 新增
       b-col.d-flex.justify-content-center.mb-5(cols='4' v-for='image in carousel' :key='image._id')
         b-card.carousel-height(:img-src='image.carouselImage')
-          b-btn(v-b-modal="'modal-delete'") 刪除圖片
-            b-modal#modal-delete(
+          b-btn(v-b-modal="'modal-delete' + image._id") 刪除圖片
+            b-modal(
               size="md"
               centered
               ok-title='確認刪除'
@@ -17,6 +17,7 @@ b-container.mt-5
               ok-variant='danger'
               cancel-variant='success'
               @ok='deleteCarousel(image._id)'
+              :id='"modal-delete" + image._id'
             )
               .text-center.my-5.kakunin 確定要刪除此圖片嗎?
     b-modal#modal-carousel(
@@ -138,10 +139,12 @@ export default {
     background: transparent !important;
     color: $font-primary !important;
     font-size: 36px;
+    transition: 0.5s;
     &:hover {
-      background: transparent !important;
-      color: $font-primary !important;
+      background: $font-primary !important;
+      color: white !important;
       font-size: 36px;
+      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.5);
     }
   }
 }
@@ -149,7 +152,6 @@ export default {
   width: 100%;
   height: 200px;
   border-radius: 10px;
-  border: 1px solid gray;
   position: relative;
   img {
     width: 100%;
@@ -169,10 +171,12 @@ export default {
     color: transparent;
     font-size: 36px;
     font-weight: bold;
+    transition: 0.5s;
+    filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.2);
     &:hover {
-      background: transparent !important;
-      color: rgb(255, 255, 255);
-      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5));
+      background: black !important;
+      color: white !important;
+      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.5);
     }
   }
 }

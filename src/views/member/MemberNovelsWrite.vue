@@ -58,6 +58,7 @@ export default {
         _id: '',
         author: '',
         authorId: '',
+        publish: true,
         publishDate: new Date()
       }
     }

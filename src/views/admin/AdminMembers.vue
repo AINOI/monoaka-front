@@ -3,8 +3,47 @@ b-container#adminmembersList.mt-5
   b-row.mb-5
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 用戶管理
   b-table(striped hover :items='users' :fields='fields' ref='table')
-    template(#cell(edit)='data')
-      b-btn.aino-btn-third.bg-danger(@click='deleteUser(data.index)') 刪除
+    template(#cell(AccountState)='data')
+      | {{ data.item.blcok ? '停用中' : '啟用中' }}
+    template(#cell(Block)='data')
+      b-btn.aino-btn-third.aino-bg-third(@click='adminBlockAccount(data.index)') 停用帳號
+    template(#cell(RetreatMember)='data')
+      b-btn.aino-btn-third.aino-bg-wood(@click='adminRetreatMember(data.index)') 恢復帳號
+    template(#cell(DeleteAccount)='data')
+      b-btn.aino-btn-third.bg-danger(@click='adminDeleteAccount(data.index)') 刪除
+
+  b-modal#modal-adminBlockAccount(
+    size="lg"
+    centered
+    ok-title='確認停用'
+    cancel-title='取消編輯'
+    ok-variant='danger'
+    cancel-variant='success'
+    @ok="blockAccount(true)"
+  )
+    .h2.text-center 是否暫時停用此帳號?
+
+  b-modal#modal-adminRetreatMember(
+    size="lg"
+    centered
+    ok-title='確認重啟'
+    cancel-title='取消編輯'
+    ok-variant='danger'
+    cancel-variant='success'
+    @ok="blockAccount(false)"
+  )
+    .h2.text-center 是否重新啟用此帳號?
+
+  b-modal#modal-adminDeleteAccount(
+    size="lg"
+    centered
+    ok-title='確認刪除'
+    cancel-title='取消刪除'
+    ok-variant='danger'
+    cancel-variant='success'
+    @ok=""
+  )
+    .h2.text-center 是否刪除此帳號?
 </template>
 
 <script>
@@ -21,8 +60,43 @@ export default {
         { key: 'account', label: '帳號' },
         { key: 'nickname', label: '創作者名稱' },
         { key: 'email', label: 'email' },
-        { key: 'edit', label: '刪除' }
+        { key: 'AccountState', label: '帳號狀態' },
+        { key: 'Block', label: '停用帳號' },
+        { key: 'RetreatMember', label: '恢復帳號' },
+        { key: 'DeleteAccount', label: '刪除' }
       ]
+    }
+  },
+  methods: {
+    adminBlockAccount (index) {
+      this.form = { ...this.users[index], index }
+      this.$bvModal.show('modal-adminBlockAccount')
+    },
+    adminRetreatMember (index) {
+      this.form = { ...this.users[index], index }
+      this.$bvModal.show('modal-adminRetreatMember')
+    },
+    adminDeleteAccount (index) {
+      this.form = { ...this.users[index], index }
+      this.$bvModal.show('modal-adminDeleteAccount')
+    },
+    async blockAccount (value) {
+      try {
+        const { data } = await this.api.patch('/user/adminAccountState/' + this.form._id, { block: value }, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        this.users[this.from.index] = { ...this.form, block: value, image: data.result.image }
+        this.$refs.table.refresh()
+        console.log(data)
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: error.response.data.message
+        })
+      }
     }
   },
   async created () {
