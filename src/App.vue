@@ -10,7 +10,7 @@
             b-nav-item.ml-md-5(to='/MNovels') 文作列表
             b-nav-item.ml-md-5(to='/MAbout') 關於Monoaka
             b-nav-item.ml-md-5(to='/MRules') Monoaka規範
-            b-nav-item.ml-md-5(to='/MReport') 問題回報
+            b-nav-item.ml-md-5(v-if='!user.isAdmin' to='/MReport') 問題回報
           div.d-flex.flex-column.flex-md-row.ml-md-5
             b-nav-item.ml-md-5(v-if='!user.isLogin' to='/register') 成為創作者
             b-nav-item.ml-md-5(v-if='!user.isLogin' to='/login') 登入

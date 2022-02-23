@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container#login.vh-100(fluid)
+b-container#login(fluid)
   div.whiteboard
     button.homebtn(@click='toHomePage') H
     b-row.mt-0.py-3.h-100

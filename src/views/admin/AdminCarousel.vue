@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container.mt-5
+b-container.my-5
   b-row.mb-5
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 主頁輪播圖管理
   b-container#carouselChange(fluid)

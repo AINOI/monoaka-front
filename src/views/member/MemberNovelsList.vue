@@ -4,7 +4,7 @@ b-container#membernovelsList.mt-5
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style="height: 50px;")
     template(#cell(edit)='data')
-      b-btn.aino-btn-third(@click='editNovels(data.index)') 編輯
+      b-btn.aino-btn-third.aino-bg-third(@click='editNovels(data.index)') 編輯
   b-modal#modal-novel(
     size="lg"
     centered

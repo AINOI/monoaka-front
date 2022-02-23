@@ -31,10 +31,6 @@
             b-form-textarea(v-model='form.text' type='text' required :state='state.text' rows='20')
         b-col(cols='12')
           b-button(@click='publish' :disabled='modalSubmitting') 完成創作
-        b-col(cols='12')
-          div(v-model='form.author' :state='this.user.nickname')
-        b-col(cols='12')
-          div(v-model='form.authorId')
 </template>
 
 <script>

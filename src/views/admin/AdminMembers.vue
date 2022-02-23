@@ -1,10 +1,10 @@
 <template lang="pug">
-b-container#adminmembersList.mt-5
+b-container#adminmembersList.my-5
   b-row.mb-5
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 用戶管理
-  b-table(striped hover :items='users' :fields='fields' ref='table')
+  b-table(striped hover :items='accounts' :fields='fields' ref='table')
     template(#cell(AccountState)='data')
-      | {{ data.item.blcok ? '停用中' : '啟用中' }}
+      | {{ data.item.block ? '停用中' : '啟用中' }}
     template(#cell(Block)='data')
       b-btn.aino-btn-third.aino-bg-third(@click='adminBlockAccount(data.index)') 停用帳號
     template(#cell(RetreatMember)='data')
@@ -41,7 +41,7 @@ b-container#adminmembersList.mt-5
     cancel-title='取消刪除'
     ok-variant='danger'
     cancel-variant='success'
-    @ok=""
+    @ok="deleteAccount()"
   )
     .h2.text-center 是否刪除此帳號?
 </template>
@@ -55,7 +55,7 @@ export default {
         nickname: '',
         email: ''
       },
-      users: [],
+      accounts: [],
       fields: [
         { key: 'account', label: '帳號' },
         { key: 'nickname', label: '創作者名稱' },
@@ -69,32 +69,61 @@ export default {
   },
   methods: {
     adminBlockAccount (index) {
-      this.form = { ...this.users[index], index }
+      this.form = { ...this.accounts[index], index }
       this.$bvModal.show('modal-adminBlockAccount')
     },
     adminRetreatMember (index) {
-      this.form = { ...this.users[index], index }
+      this.form = { ...this.accounts[index], index }
       this.$bvModal.show('modal-adminRetreatMember')
     },
     adminDeleteAccount (index) {
-      this.form = { ...this.users[index], index }
+      this.form = { ...this.accounts[index], index }
       this.$bvModal.show('modal-adminDeleteAccount')
     },
     async blockAccount (value) {
       try {
-        const { data } = await this.api.patch('/user/adminAccountState/' + this.form._id, { block: value }, {
+        const { data } = await this.api.patch('/users/accountstate/' + this.form._id, { block: value }, {
           headers: {
             authorization: 'Bearer ' + this.user.token
           }
         })
-        this.users[this.from.index] = { ...this.form, block: value, image: data.result.image }
+        this.accounts[this.form.index] = { ...this.form, block: value }
         this.$refs.table.refresh()
         console.log(data)
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '編輯成功'
+        })
+      } catch (error) {
+        console.log(error)
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '編輯失敗'
+        })
+      }
+    },
+    async deleteAccount () {
+      try {
+        const { data } = await this.api.delete('/users/deleteaccount/' + this.form._id, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        console.log(data.result)
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '使用者資料刪除成功'
+        })
+        this.accounts.splice(this.form.index, 1)
+        this.$refs.table.refresh()
       } catch (error) {
         this.$swal({
           icon: 'error',
           title: '錯誤',
-          text: error.response.data.message
+          text: '使用者資料刪除失敗'
         })
       }
     }
@@ -106,12 +135,12 @@ export default {
           authorization: 'Bearer ' + this.user.token
         }
       })
-      this.users = data.result
+      this.accounts = data.result
     } catch (error) {
       this.$swal({
         icon: 'error',
         title: '錯誤',
-        text: '文作取得失敗'
+        text: '使用者資料取得失敗'
       })
     }
   }

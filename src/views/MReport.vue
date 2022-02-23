@@ -1,26 +1,31 @@
 <template lang="pug">
 b-container#MReport
+  b-row
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-problem.aino-rounded(cols='12') 問題回報
   b-form
     b-row
-      b-col.h1.rounded.text-white.text-center.py-3.aino-bg-problem.aino-rounded(cols='12') 問題回報
-        //- nickname isLogin
+      //- nickname isLogin
       b-col.d-flex.align-items-center(cols='12' v-if='user.isLogin')
         .aino-fs.mr-3 創作者名稱:
-        div.h4.m-0 {{ user.account }}
-            //- nickname !isLogin
+        div.h4.m-0 {{ user.nickname }}
+      //- nickname !isLogin
       b-col.d-flex.align-items-center(cols='12' v-if='!user.isLogin')
         .aino-fs.mr-3 名稱:
         b-form-group.w-75
-          b-form-input.w-100(v-model='form.nickname' type='text' :state='state.nickname')
+          b-form-input.w-100(v-model='form.rpnickname' type='text' :state='state.rpnickname')
         //- account
       b-col.d-flex.align-items-center(cols='12' v-if='user.isLogin')
         .aino-fs.mr-3 創作者帳號:
         div.h4.m-0 {{ user.account }}
         //- email
-      b-col.d-flex.align-items-center(cols='12')
+      b-col.d-flex.align-items-center(cols='12' v-if='!user.isLogin')
         .aino-fs.mr-3 E-mail:
         b-form-group.w-75
-          b-form-input.w-100(v-model='form.email' type='text' :state='state.email')
+          b-form-input.w-100(v-model='form.rpemail' type='text' :state='state.rpemail')
+        //- email isLogin
+      b-col.d-flex.align-items-center(cols='12' v-if='user.isLogin')
+        .aino-fs.mr-3 E-mail:
+        div.h4.m-0 {{ user.email }}
         //-report items
       b-col.d-flex.align-items-center(cols='12')
         .aino-fs.mr-3 反映項目:
@@ -37,7 +42,7 @@ b-container#MReport
         | ，若詳閱並同意，請勾選。
         //- check button
       b-col.aino-fs.d-flex.justify-content-center(cols='12')
-        b-btn(:disabled='!check' :state='state') 送出
+        b-btn(:disabled='!check' :state='state' @click='report') 送出
 </template>
 
 <script>
@@ -47,12 +52,14 @@ export default {
   data () {
     return {
       check: false,
+      reports: [],
       form: {
-        nickname: '',
-        email: '',
+        rpnickname: '',
+        rpaccount: '匿名創作者',
+        rpemail: '',
         reportItem: '',
         reportText: '',
-        acc: ''
+        processed: false
       },
       reportItems: [
         { text: '請選擇反映項目', value: '' },
@@ -63,10 +70,44 @@ export default {
   computed: {
     state () {
       return {
-        nickname: this.form.nickname.length === 0 ? null : this.form.nickname.length > 1,
-        email: this.form.email.length === 0 ? null : validator.isEmail(this.form.email),
+        rpnickname: this.form.rpnickname.length === 0 ? null : this.form.rpnickname.length > 1,
+        rpemail: this.form.rpemail.length === 0 ? null : validator.isEmail(this.form.rpemail),
         reportItem: this.form.reportItem.length === 0 ? null : true,
         reportText: this.form.reportText.length === 0 ? null : this.form.reportText.length > 1
+      }
+    }
+  },
+  methods: {
+    async report () {
+      const fd = new FormData()
+      for (const key in this.form) {
+        if (key !== '_id' && this.user.account === '') {
+          fd.append(key, this.form[key])
+        } else {
+          this.form.rpnickname = this.user.nickname
+          this.form.rpaccount = this.user.account
+          this.form.rpemail = this.user.email
+        }
+      }
+      try {
+        const { data } = await this.api.post('/reports', { ...this.form }, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        this.reports.push(data.result)
+        this.$router.push('/')
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '問題回報傳送成功，我們會盡快處理。'
+        })
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: error.response.data.message
+        })
       }
     }
   }

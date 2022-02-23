@@ -43,7 +43,8 @@ export default {
       form: {
         account: '',
         password: '',
-        email: ''
+        email: '',
+        block: false
       }
     }
   },

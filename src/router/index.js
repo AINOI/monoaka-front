@@ -84,7 +84,7 @@ const routes = [
         meta: {
           login: true,
           admin: true,
-          title: 'Mono‘s Archive | Novels Manager'
+          title: 'Mono‘s Archive | Carousel Manager'
         }
       },
       {
@@ -108,13 +108,13 @@ const routes = [
         }
       },
       {
-        path: 'adminissues',
-        name: 'AdminIssues',
-        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/AdminIssues.vue'),
+        path: 'adminreports',
+        name: 'AdminReports',
+        component: () => import(/* webpackChunkName: "admin" */ '../views/admin/AdminReports.vue'),
         meta: {
           login: true,
           admin: true,
-          title: 'Mono‘s Archive | Issues Manager'
+          title: 'Mono‘s Archive | Reports Manager'
         }
       }
     ]
