@@ -157,7 +157,7 @@ const routes = [
             component: () => import(/* webpackChunkName: "member" */ '../views/member/MemberNovelsList.vue'),
             meta: {
               login: true,
-              title: 'Mono‘s Archive | 作品頁面List'
+              title: 'Mono‘s Archive | 作品頁面 | 列表'
             }
           },
           {
@@ -166,7 +166,7 @@ const routes = [
             component: () => import(/* webpackChunkName: "member" */ '../views/member/MemberNovelsWrite.vue'),
             meta: {
               login: true,
-              title: 'Mono‘s Archive | 作品頁面Write'
+              title: 'Mono‘s Archive | 作品頁面 | 創作'
             }
           }
         ]

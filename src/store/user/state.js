@@ -4,6 +4,12 @@ export default () => {
     account: '',
     nickname: '',
     role: 0,
-    email: ''
+    email: '',
+    emailswitch: 1,
+    image: null,
+    sex: '',
+    birthdayMon: '',
+    birthdayDate: '',
+    block: ''
   }
 }

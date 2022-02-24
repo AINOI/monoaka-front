@@ -8,11 +8,11 @@ b-container#adminnovelsList.my-5
     template(#cell(publishState)='data')
       | {{ data.item.publish ? '已上架' : '下架中' }}
     template(#cell(unpublish)='data')
-      b-btn.aino-btn-third.aino-bg-third(@click='adminUnpublishNovels(data.index)') 編輯
+      b-btn.aino-btn-third(@click='adminUnpublishNovels(data.index)') 編輯
     template(#cell(republish)='data')
-      b-btn.aino-btn-third.aino-bg-wood(@click='adminRepublishNovels(data.index)') 重新上架
+      b-btn.aino-btn-wood(@click='adminRepublishNovels(data.index)') 重新上架
     template(#cell(delete)='data')
-      b-btn.aino-btn-third.bg-danger(@click='adminDeleteNovels(data.index)') 刪除
+      b-btn.aino-btn-danger(@click='adminDeleteNovels(data.index)') 刪除
 
   b-modal#modal-adminUnpublishNovels(
     size="lg"

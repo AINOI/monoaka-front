@@ -5,7 +5,7 @@ b-container#memberhome
   b-row.mt-5.border-bottom
     b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='3')
       | 創作者頭貼
-      img.mt-3.img-box.aino-rounded(:src='img')
+      img.mt-3.img-box.aino-rounded(:src='user.image')
     b-col.pl-5.mb-5(cols='9')
       b-row.h-100.d-flex.mx-0.my-0
         b-col.d-flex.flex-column.justify-content-around(cols='12')
@@ -17,7 +17,7 @@ b-container#memberhome
           div.h4(v-if='user.birthdayMon !== 13 || user.birthdayDate !== 32') 生日: {{ user.birthdayMon }} 月 {{ user.birthdayDate }} 日
           div.h4(v-if='user.birthdayMon === 13 && user.birthdayDate === 32') 生日: 不讓你看 キラー☆
           div.h4 性別: {{ user.sex }}
-          b-btn.aino-btn-third(to='/member/memberinfo' v-if='user.isLogin') 資訊內容更新
+          b-btn.aino-btn-third(to='/member/memberinfo') 資訊內容更新
   b-row.mt-5
     b-col.h3(cols='12') 作品總數: {{ novelsFilterMemberHome.length }} 篇
   b-row

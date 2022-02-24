@@ -45,29 +45,54 @@
 
 //list
   //list-edit
-  #modal-novel {
-    label {
-      font-size: 1rem;
-      font-weight: bolder;
-    }
-    footer {
-      button:nth-child(1) {
-        background: red !important;
-        color: $font-white;
+  
+    #modal-novel {
+      label {
+        font-size: 1rem;
         font-weight: bolder;
-        border: none;
-        &:hover {
-          background: crimson !important;
+      }
+      footer {
+        button:nth-child(1) {
+          background: red !important;
+          color: $font-white;
+          font-weight: bolder;
+          border: none;
+          &:hover {
+            background: crimson !important;
+          }
+        }
+        button:nth-child(2) {
+          background: $third !important;
+          color: $font-white;
+          font-weight: bolder;
+          border: none;
+          &:hover {
+            background: $third-hover !important;
+          }
         }
       }
-      button:nth-child(2) {
-        background: $third !important;
-        color: $font-white;
-        font-weight: bolder;
-        border: none;
-        &:hover {
-          background: $third-hover !important;
-        }
+    }
+
+    .deleteSignal {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 130px;
+      height: 130px;
+      background: red;
+      border-radius: 50%;
+      position: relative;
+      &::before {
+        content: '';
+        width: 100px;
+        height: 100px;
+        background: white;
+        border-radius: 50%;
+      }
+      .deleteSignalText {
+        position: absolute;
+        color: red;
+        font-size: 64px;
       }
     }
-  }
+  

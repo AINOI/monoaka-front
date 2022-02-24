@@ -5,14 +5,30 @@ import router from '@/router'
 export const login = async ({ commit }, form) => {
   try {
     const { data } = await api.post('/users/login', form)
-    console.log(data.result)
     commit('login', data.result)
-    router.push('/')
-    swal.fire({
-      icon: 'success',
-      title: '成功',
-      text: '登入成功'
-    })
+    if (data.result.block === true) {
+      commit('logout')
+      router.push('/')
+      swal.fire({
+        icon: 'error',
+        title: '登入失敗',
+        text: '此帳號暫時被停用'
+      })
+    } else if (data.result.role === 1) {
+      router.push('/')
+      swal.fire({
+        icon: 'success',
+        title: '登入成功',
+        text: '您已進入管理員模式'
+      })
+    } else {
+      router.push('/')
+      swal.fire({
+        icon: 'success',
+        title: '登入成功',
+        text: '歡迎使用Mono‘s Archive'
+      })
+    }
   } catch (error) {
     swal.fire({
       icon: 'error',
@@ -33,8 +49,7 @@ export const logout = async ({ commit, state }) => {
     router.push('/')
     swal.fire({
       icon: 'success',
-      title: '成功',
-      text: '登出'
+      title: '登出成功'
     })
   } catch (error) {
     swal.fire({

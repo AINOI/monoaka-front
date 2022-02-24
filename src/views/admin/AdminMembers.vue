@@ -6,11 +6,11 @@ b-container#adminmembersList.my-5
     template(#cell(AccountState)='data')
       | {{ data.item.block ? '停用中' : '啟用中' }}
     template(#cell(Block)='data')
-      b-btn.aino-btn-third.aino-bg-third(@click='adminBlockAccount(data.index)') 停用帳號
+      b-btn.aino-btn-third(@click='adminBlockAccount(data.index)') 停用帳號
     template(#cell(RetreatMember)='data')
-      b-btn.aino-btn-third.aino-bg-wood(@click='adminRetreatMember(data.index)') 恢復帳號
+      b-btn.aino-btn-wood(@click='adminRetreatMember(data.index)') 恢復帳號
     template(#cell(DeleteAccount)='data')
-      b-btn.aino-btn-third.bg-danger(@click='adminDeleteAccount(data.index)') 刪除
+      b-btn.aino-btn-danger(@click='adminDeleteAccount(data.index)') 刪除
 
   b-modal#modal-adminBlockAccount(
     size="lg"

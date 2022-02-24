@@ -1,5 +1,5 @@
 <template lang="pug">
-b-container.my-5
+b-container#admincarousel.my-5
   b-row.mb-5
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 主頁輪播圖管理
   b-container#carouselChange(fluid)
@@ -124,65 +124,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../scss/primary.scss';
+@import '../../../scss/aino-style.scss';
 
-.add {
-  display: flex;
-  justify-content: center;
-  align-content: center;
-  height: 200px;
-  button {
-    width: 100%;
-    height: 100%;
-    border: 2px dashed gray;
-    border-radius: 10px;
-    background: transparent !important;
-    color: $font-primary !important;
-    font-size: 36px;
-    transition: 0.5s;
-    &:hover {
-      background: $font-primary !important;
-      color: white !important;
-      font-size: 36px;
-      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.5);
-    }
-  }
-}
-.carousel-height{
-  width: 100%;
-  height: 200px;
-  border-radius: 10px;
-  position: relative;
-  img {
-    width: 100%;
-    height: 100%;
-    border-radius: 10px;
-    object-fit: cover;
-  }
-  button {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    border-radius: 10px;
-    transform: translate(-50%, -50%);
-    height: 100%;
-    width: 100%;
-    background: transparent !important;
-    color: transparent;
-    font-size: 36px;
-    font-weight: bold;
-    transition: 0.5s;
-    filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.2);
-    &:hover {
-      background: black !important;
-      color: white !important;
-      filter: drop-shadow(2px 2px 1px rgba(0,0,0,0.5)) opacity(0.5);
-    }
-  }
-}
-
-.kakunin {
-  font-size: 36px;
-  font-weight: bold;
-}
 </style>

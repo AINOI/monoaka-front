@@ -23,7 +23,8 @@ $coffee: #8B5A2B;
 $wood:#CC9966;
 $wood-hover:#a17951 ;
 $light: #F8F7F4;
-$problem: #CD3333;
+$problem: #ff4759;
+$problem-hover: #c82333;
 $font-primary: #4F4F4F;
 $font-second: #8B8989;
 $font-white: #ffffff;
@@ -82,7 +83,11 @@ $font-white: #ffffff;
   border-radius: 10px;
   transition: 0.5s;
   &:hover {
-    background: $third-hover;
+    background: $third-hover !important;
+  }
+  &:focus {
+    background: $third-hover !important;
+    box-shadow: 0 0 0 0.2rem #54a88c55;
   }
 }
 
@@ -94,7 +99,27 @@ $font-white: #ffffff;
   border-radius: 10px;
   transition: 0.5s;
   &:hover {
-    background: $wood-hover;
+    background: $wood-hover !important;
+  }
+  &:focus {
+    background: $wood-hover !important;
+    box-shadow: 0 0 0 0.2rem #a1795155;
+  }
+}
+
+.aino-btn-danger {
+  background: $problem;
+  color: $font-white;
+  font-size: 1rem;
+  border: none;
+  border-radius: 10px;
+  transition: 0.5s;
+  &:hover {
+    background: $problem-hover !important;
+  }
+  &:focus {
+    background: $problem-hover !important;
+    box-shadow: 0 0 0 0.2rem rgb(225 83 97 / 50%);
   }
 }
 
@@ -130,4 +155,21 @@ margin-right: auto ;
 
 body {
   background: $forth;
+}
+
+//table type
+thead{
+  tr {
+    th {
+      width: 100px;
+      text-align: center;
+    }
+  }
+}
+tbody{
+  tr{
+    td{
+      text-align: center;
+    }
+  }
 }

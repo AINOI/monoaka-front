@@ -17,7 +17,7 @@ b-container#memberothershome
           div.h4(v-if='this.birthdayMon !== 13 || this.birthdayDate !== 32') 生日: {{ this.birthdayMon }} 月 {{ this.birthdayDate }} 日
           div.h4(v-if='this.birthdayMon === 13 && this.birthdayDate === 32') 生日: 不讓你看 キラー☆
           div.h4 性別: {{ this.sex }}
-          b-btn.aino-btn-third(to='' v-if='user.isLogin') 加入好友
+          button.aino-btn-third(@click='addFriend') 加入好友
 </template>
 
 <script>
@@ -32,6 +32,17 @@ export default {
       birthdayMon: '',
       birthdayDate: '',
       sex: ''
+    }
+  },
+  methods: {
+    addFriend () {
+      if (this.user._id === '') {
+        this.$swal({
+          icon: 'error',
+          title: '加入好友失敗',
+          text: '請先登入'
+        })
+      }
     }
   },
   async created () {

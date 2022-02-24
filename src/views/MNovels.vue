@@ -32,9 +32,9 @@ b-container#MNovels(fluid)
             .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter !== ''") {{ this.filter }}
           b-col.d-flex.justify-content-end(cols='12')
             .overflow-auto
-              b-pagination(:per-page='perPage' :total-rows='rows' v-model="currentPage")
-          b-col(cols='12' v-for='novel in filterType' :key='novel._id')
-            NovelsCard(:novel='novel')
+              b-pagination(:per-page='perPage' :total-rows='rows' v-model="currentPage" aria-controls='novelslistpage')
+          b-col(cols='12' v-for='novel in sliceitems' :key='novel._id')
+            NovelsCard(:novel='novel' :per-page='perPage' :current-page="currentPage" id='novelslistpage')
           //- b-col(cols='12')
           //-   b-table(:items="items" :per-page="perPage" :current-page="currentPage")
     b-col(cols='3')
@@ -72,30 +72,7 @@ export default {
       filter: '',
       perPage: 3,
       currentPage: 1,
-      // items: [
-      //   { id: 1, first_name: 'Fred', last_name: 'Flintstone' },
-      //   { id: 2, first_name: 'Wilma', last_name: 'Flintstone' },
-      //   { id: 3, first_name: 'Barney', last_name: 'Rubble' },
-      //   { id: 4, first_name: 'Betty', last_name: 'Rubble' },
-      //   { id: 5, first_name: 'Pebbles', last_name: 'Flintstone' },
-      //   { id: 6, first_name: 'Bamm Bamm', last_name: 'Rubble' },
-      //   { id: 7, first_name: 'The Great', last_name: 'Gazzoo' },
-      //   { id: 8, first_name: 'Rockhead', last_name: 'Slate' },
-      //   { id: 9, first_name: 'Pearl', last_name: 'Slaghoople' }
-      // ],
-      novels: [],
-      pageItem: {
-        pageTotal: 0,
-        currentPage: 0,
-        hasPage: true,
-        hasNext: false,
-        showPage: 10,
-        pageCurrent: [],
-        currentPageTag: 1,
-        PageTagTotal: 0,
-        pageTagHasPre: false,
-        pageTagHasNext: false
-      }
+      novels: []
     }
   },
   methods: {
@@ -121,6 +98,12 @@ export default {
         if (this.filter === '') return true
         return item.novelType === this.filter
       })
+    },
+    sliceitems () {
+      return this.filterType.slice(
+        (this.currentPage - 1) * 20,
+        (this.currentPage - 1) * 20 + 20
+      )
     }
   },
   async created () {

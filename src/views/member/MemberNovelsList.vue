@@ -4,7 +4,9 @@ b-container#membernovelsList.mt-5
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style="height: 50px;")
     template(#cell(edit)='data')
-      b-btn.aino-btn-third.aino-bg-third(@click='editNovels(data.index)') 編輯
+      b-btn.aino-btn-third(@click='editNovels(data.index)') 編輯
+    template(#cell(deleteNovels)='data')
+      b-btn.aino-btn-danger(@click='memberDeleteNovels(data.index)') 刪除文作
   b-modal#modal-novel(
     size="lg"
     centered
@@ -72,6 +74,19 @@ b-container#membernovelsList.mt-5
         :state='state.text'
         rows='20'
       )
+
+  b-modal#modal-memberDeleteNovels(
+    size="lg"
+    centered
+    ok-title='確認刪除'
+    cancel-title='取消刪除'
+    ok-variant='danger'
+    cancel-variant='success'
+    @ok='deleteNovels'
+  )
+    .h2.deleteSignal.mx-auto.my-3
+      div.deleteSignalText !
+    .h2.text-center 是否刪除此文作?
 </template>
 
 <script>
@@ -99,7 +114,8 @@ export default {
         { key: 'title', label: '文作名稱' },
         { key: 'novelType', label: '文作分類' },
         { key: 'publishDate', label: '上傳日期' },
-        { key: 'edit', label: '編輯' }
+        { key: 'edit', label: '編輯' },
+        { key: 'deleteNovels', label: '刪除文作' }
       ]
     }
   },
@@ -199,6 +215,33 @@ export default {
       // or this type
       this.form = { ...this.novelsFilterMemberNovelsList[index], image: null, index }
       this.$bvModal.show('modal-novel')
+    },
+    memberDeleteNovels (index) {
+      this.form = { ...this.novelsFilterMemberNovelsList[index], image: null, index }
+      this.$bvModal.show('modal-memberDeleteNovels')
+    },
+    async deleteNovels () {
+      try {
+        const { data } = await this.api.delete('/novels/user/' + this.form._id, {
+          headers: {
+            authorization: 'Bearer ' + this.user.token
+          }
+        })
+        console.log(data.result)
+        this.$swal({
+          icon: 'success',
+          title: '成功',
+          text: '文作刪除成功'
+        })
+        this.novelsFilterMemberNovelsList.splice(this.form.index, 1)
+        this.$refs.table.refresh()
+      } catch (error) {
+        this.$swal({
+          icon: 'error',
+          title: '錯誤',
+          text: '文作刪除失敗'
+        })
+      }
     }
   },
   async created () {
@@ -221,11 +264,6 @@ export default {
 </script>
 
 <style lang="scss">
-@import '../../../scss/aino-style.scss';
+@import '../../../scss/aino-style.scss' ;
 
-tr {
-  th {
-    width: 100px;
-  }
-}
 </style>

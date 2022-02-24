@@ -172,11 +172,18 @@ export default {
         this.$swal({
           icon: 'error',
           title: '失敗',
-          text: error.response.data.message
+          text: '創作者頭貼未更新'
         })
       }
       this.modalSubmitting = false
     }
+  },
+  created () {
+    this.form.nickname = this.user.nickname
+    this.form.emailswitch = this.user.emailswitch
+    this.form.sex = this.user.sex
+    this.form.birthdayMon = this.user.birthdayMon
+    this.form.birthdayDate = this.user.birthdayDate
   }
 }
 </script>

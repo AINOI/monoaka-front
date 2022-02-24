@@ -29,8 +29,8 @@
         b-col.aino-fs(cols='12') 文作內文:
           b-form-group(:state='state.text')
             b-form-textarea(v-model='form.text' type='text' required :state='state.text' rows='20')
-        b-col(cols='12')
-          b-button(@click='publish' :disabled='modalSubmitting') 完成創作
+        b-col.d-flex.justify-content-center(cols='12')
+          b-btn.aino-btn-third.kanseibtn(@click='publish' :disabled='modalSubmitting') 完成創作
 </template>
 
 <script>
@@ -137,5 +137,10 @@ export default {
 
 .img-inputer__mask {
   display: block !important;
+}
+.kanseibtn {
+  height: 50px;
+  width: 250px;
+  font-size: 24px !important;
 }
 </style>
