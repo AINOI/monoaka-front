@@ -137,6 +137,7 @@ export default {
         }
       })
       this.adminnovels = data.result
+      this.adminnovels.reverse()
     } catch (error) {
       this.$swal({
         icon: 'error',

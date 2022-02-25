@@ -1,5 +1,5 @@
 <template lang="pug">
-b-card.card-novels.card-filter.mb-4(img-left :img-src='novel.image' img-width= 200)
+b-card.card-novels.card-filter.mb-4(img-left :img-src='novel.image' img-width= 400)
   b-card-body.card-text-board.pt-0
     b-card-title {{ novel.title }}
     b-card-sub-title.mb-2 文作分類:{{ novel.novelType }}

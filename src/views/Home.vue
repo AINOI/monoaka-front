@@ -6,9 +6,8 @@ b-container#home.px-0.h-100(fluid)
     b-row
       b-col.my-5.aino-osusume(cols='12')
         | 每週推薦
-    b-row.mt-0
-      b-col(cols='12' v-for='novel in novels' :key='novel._id')
-        NovelsCard(:novel='novel')
+    b-row.mt-0.mb-5
+      NovelsCardTest
 </template>
 
 <style lang="scss">
@@ -17,30 +16,13 @@ b-container#home.px-0.h-100(fluid)
 </style>
 
 <script>
-import NovelsCard from '../components/NovelsCard.vue'
+import NovelsCardTest from '../components/NovelsCardTest.vue'
 import HomePageCarousel from '../components/HomePageCarousel.vue'
 
 export default {
   components: {
-    NovelsCard,
+    NovelsCardTest,
     HomePageCarousel
-  },
-  data () {
-    return {
-      novels: []
-    }
-  },
-  async created () {
-    try {
-      const { data } = await this.api.get('/novels')
-      this.novels = data.result
-    } catch (error) {
-      this({
-        icon: 'error',
-        title: '錯誤',
-        text: '文作取得失敗'
-      })
-    }
   }
 }
 </script>

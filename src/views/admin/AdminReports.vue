@@ -146,6 +146,7 @@ export default {
         }
       })
       this.reports = data.result
+      this.reports.reverse()
     } catch (error) {
       this.$swal({
         icon: 'error',

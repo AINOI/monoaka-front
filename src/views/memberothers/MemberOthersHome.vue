@@ -17,7 +17,7 @@ b-container#memberothershome
           div.h4(v-if='this.birthdayMon !== 13 || this.birthdayDate !== 32') 生日: {{ this.birthdayMon }} 月 {{ this.birthdayDate }} 日
           div.h4(v-if='this.birthdayMon === 13 && this.birthdayDate === 32') 生日: 不讓你看 キラー☆
           div.h4 性別: {{ this.sex }}
-          button.aino-btn-third(@click='addFriend') 加入好友
+          b-btn.aino-btn-third(@click='addFriend') 加入好友
 </template>
 
 <script>
