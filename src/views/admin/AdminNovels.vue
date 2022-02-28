@@ -45,6 +45,8 @@ b-container#adminnovelsList.my-5
     cancel-variant='success'
     @ok='deleteNovels'
   )
+    .h2.deleteSignal.mx-auto.my-3
+      div.deleteSignalText !
     .h2.text-center 是否刪除此文作?
 </template>
 

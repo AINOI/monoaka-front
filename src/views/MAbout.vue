@@ -18,20 +18,22 @@ b-container#MAbout.mt-5.px-0.h-100.d-flex.justify-content-center.align-items-cen
 <style lang="scss">
 @import '../../scss/aino-style.scss';
 
-.row {
-  margin-top: 0;
-  .col-md-4 {
-    padding: 0;
-    img {
-      width: 100%;
-      height: 100%;
+#MAbout {
+  .row {
+    margin-top: 0;
+    .col-md-4 {
+      padding: 0;
+      img {
+        width: 100%;
+        height: 100%;
+      }
     }
-  }
-  .border-top {
-    border-radius: 15px 15px 0 0 ;
-  }
-  .border-bottom {
-    border-radius: 0 0 15px 15px;
+    .border-top {
+      border-radius: 15px 15px 0 0 ;
+    }
+    .border-bottom {
+      border-radius: 0 0 15px 15px;
+    }
   }
 }
 

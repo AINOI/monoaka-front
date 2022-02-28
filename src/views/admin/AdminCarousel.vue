@@ -19,7 +19,9 @@ b-container#admincarousel.my-5
               @ok='deleteCarousel(image._id)'
               :id='"modal-delete" + image._id'
             )
-              .text-center.my-5.kakunin 確定要刪除此圖片嗎?
+              .h2.deleteSignal.mx-auto.my-3
+                div.deleteSignalText !
+              .text-center.my-5.kakunin 是否刪除此圖片?
     b-modal#modal-carousel(
       size="md"
       centered
@@ -28,6 +30,8 @@ b-container#admincarousel.my-5
       @ok="addCarousel()"
       @hidden="resetForm"
       title='新增主頁輪播圖'
+      ok-variant='success'
+      cancel-variant='danger'
     )
       b-row
         b-col.d-flex.justify-content-center.align-items-center(cols='12')

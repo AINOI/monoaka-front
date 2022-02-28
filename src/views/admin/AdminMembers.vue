@@ -43,6 +43,8 @@ b-container#adminmembersList.my-5
     cancel-variant='success'
     @ok="deleteAccount()"
   )
+    .h2.deleteSignal.mx-auto.my-3
+      div.deleteSignalText !
     .h2.text-center 是否刪除此帳號?
 </template>
 
