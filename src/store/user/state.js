@@ -10,6 +10,7 @@ export default () => {
     sex: '',
     birthdayMon: '',
     birthdayDate: '',
-    block: ''
+    block: '',
+    themeSwitcher: false
   }
 }

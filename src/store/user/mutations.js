@@ -12,6 +12,7 @@ export const login = (state, data) => {
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
   state.block = data.block
+  state.themeSwitcher = data.themeSwitcher
 }
 
 export const logout = (state, data) => {
@@ -27,6 +28,7 @@ export const logout = (state, data) => {
   state.birthdayMon = ''
   state.birthdayDate = ''
   state.block = ''
+  state.themeSwitcher = false
 }
 
 export const getInfo = (state, data) => {
@@ -42,6 +44,7 @@ export const getInfo = (state, data) => {
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
   state.block = data.block
+  state.themeSwitcher = data.themeSwitcher
 }
 
 export const updateInfo = (state, data) => {
@@ -53,4 +56,9 @@ export const updateInfo = (state, data) => {
   state.birthdayMon = data.birthdayMon
   state.birthdayDate = data.birthdayDate
   state.block = data.block
+  state.themeSwitcher = data.themeSwitcher
+}
+
+export const updateTheme = (state, data) => {
+  state.themeSwitcher = data
 }

@@ -46,7 +46,7 @@ export const logout = async ({ commit, state }) => {
       }
     })
     commit('logout')
-    router.push('/')
+    router.push('/').catch(() => {})
     swal.fire({
       icon: 'success',
       title: '登出成功'
@@ -72,4 +72,25 @@ export const getInfo = async ({ commit, state }) => {
   } catch (error) {
     commit('logout')
   }
+}
+
+export const updateTheme = async ({ commit, state }, data) => {
+  console.log(state)
+  if (state.token.length === 0) return
+  try {
+    await api.patch('/users/themeswitch', { themeSwitcher: data }, {
+      headers: {
+        authorization: 'Bearer ' + state.token
+      }
+    })
+    console.log(data)
+  } catch (error) {
+    swal.fire({
+      icon: 'error',
+      title: '錯誤',
+      text: 'none'
+    })
+    console.log(error)
+  }
+  commit('updateTheme', data)
 }
