@@ -1,8 +1,8 @@
 <template lang="pug">
 b-container#adminmembersList.my-5
   b-row.mb-5
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 用戶管理
-  b-table(striped hover :items='accounts' :fields='fields' ref='table')
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 用戶管理
+  b-table(striped :hover='!user.themeSwitcher' :items='accounts' :fields='fields' ref='table' :class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
     template(#cell(AccountState)='data')
       | {{ data.item.block ? '停用中' : '啟用中' }}
     template(#cell(Block)='data')
@@ -20,6 +20,9 @@ b-container#adminmembersList.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok="blockAccount(true)"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.text-center 是否暫時停用此帳號?
 
@@ -31,6 +34,9 @@ b-container#adminmembersList.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok="blockAccount(false)"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.text-center 是否重新啟用此帳號?
 
@@ -42,6 +48,9 @@ b-container#adminmembersList.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok="deleteAccount()"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.deleteSignal.mx-auto.my-3
       div.deleteSignalText !

@@ -85,11 +85,6 @@ export const updateTheme = async ({ commit, state }, data) => {
     })
     console.log(data)
   } catch (error) {
-    swal.fire({
-      icon: 'error',
-      title: '錯誤',
-      text: 'none'
-    })
     console.log(error)
   }
   commit('updateTheme', data)

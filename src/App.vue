@@ -1,6 +1,6 @@
 <template lang="pug">
 #app(:class="{dark:themeSwitcher, light:!themeSwitcher}")
-  b-navbar.aino-bg-primary(toggleable='lg' type='dark' :class="{navdark:themeSwitcher, light:!themeSwitcher}")
+  b-navbar.aino-bg-primary(toggleable='lg' type='dark' :class="{navDark:themeSwitcher, light:!themeSwitcher}")
     b-container(fluid)
       b-navbar-brand.logoBorder(to='/')
         .logoBorderInner Mono‘s Archive
@@ -13,8 +13,8 @@
             b-nav-item.ml-md-3.aino-b-btn(to='/MRules') Monoaka規範
             b-nav-item.ml-md-3.aino-b-btn(v-if='!user.isAdmin' to='/MReport') 問題回報
           div.d-flex.flex-column.flex-md-row.ml-md-5
-            b-nav-text.ml-md-5
-              b-form-checkbox(switch v-model='themeSwitcher') 黑暗模式
+            b-nav-text.ml-md-5.d-flex.justify-content-center(v-if='user.isLogin')
+              b-form-checkbox.text-white(switch v-model='themeSwitcher' :class="{darkModeSwitcher:user.themeSwitcher, light:user.themeSwitcher}") 黑暗模式
             b-nav-item.ml-md-5.registerType(v-if='!user.isLogin' to='/register')
               .registerBox
               b-icon-book
@@ -29,7 +29,7 @@
             b-nav-item.ml-md-5.aino-a-btn.bg-dangerAndHover(v-if='user.isLogin' @click='logout') 登出
   router-view.mh-100
   footer
-    b-container#copyright.copyright(fluid)
+    b-container#copyright.copyright(fluid :class="{footerDark:themeSwitcher, light:!themeSwitcher}")
       .h-100.d-flex.justify-content-center.align-items-center
         b-row.m-0
           b-col.font-white.h3(cols='12') Copyright &copy; 2022 Aino Studio. All rights reserved.
@@ -67,15 +67,4 @@ export default {
 <style lang="scss">
 @import '../scss/aino-style.scss';
 
-.dark {
-  background: rgb(77, 77, 77) !important;
-  transition: 0.3s;
-}
-.navdark {
-  background: rgb(121, 121, 121) !important;
-  transition: 0.3s;
-}
-.light {
-  transition: 0.3s;
-}
 </style>

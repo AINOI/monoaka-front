@@ -1,35 +1,35 @@
 <template lang="pug">
 b-container#MNovels(fluid)
   b-row.mt-5
-    b-col.bg-white.rounded(cols='9')
+    b-col.bg-white.rounded(cols='9' :class="{navDark:user.themeSwitcher, light:!user.themeSwitcher}")
       b-navbar.d-flex.justify-content-center
         b-navbar-nav.h5.w-100.d-flex.justify-content-around
-          b-nav-item.aino-novel-rounded(@click="filter = ''") 全部
-          b-nav-item.aino-novel-rounded(@click="filter = '奇幻'") 奇幻
-          b-nav-item.aino-novel-rounded(@click="filter = '古風'") 古風
-          b-nav-item.aino-novel-rounded(@click="filter = '寫實'") 寫實
-          b-nav-item.aino-novel-rounded(@click="filter = '玄怪'") 玄怪
-          b-nav-item.aino-novel-rounded(@click="filter = '恐怖'") 恐怖
-          b-nav-item.aino-novel-rounded(@click="filter = '愛情'") 愛情
-          b-nav-item.aino-novel-rounded(@click="filter = '科幻'") 科幻
-          b-nav-item.aino-novel-rounded(@click="filter = '同人'") 同人
-          b-nav-item.aino-novel-rounded(@click="filter = '西洋'") 西洋
-          b-nav-item.aino-novel-rounded(@click="filter = '東方'") 東方
+          b-nav-item.aino-novel-rounded(@click="filter = ''" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 全部
+          b-nav-item.aino-novel-rounded(@click="filter = '奇幻'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 奇幻
+          b-nav-item.aino-novel-rounded(@click="filter = '古風'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 古風
+          b-nav-item.aino-novel-rounded(@click="filter = '寫實'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 寫實
+          b-nav-item.aino-novel-rounded(@click="filter = '玄怪'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 玄怪
+          b-nav-item.aino-novel-rounded(@click="filter = '恐怖'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 恐怖
+          b-nav-item.aino-novel-rounded(@click="filter = '愛情'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 愛情
+          b-nav-item.aino-novel-rounded(@click="filter = '科幻'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 科幻
+          b-nav-item.aino-novel-rounded(@click="filter = '同人'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 同人
+          b-nav-item.aino-novel-rounded(@click="filter = '西洋'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 西洋
+          b-nav-item.aino-novel-rounded(@click="filter = '東方'" :class="{novelBtnDark:user.themeSwitcher, light:!user.themeSwitcher}") 東方
     b-col.d-flex.align-items-center(cols='3')
       b-form.w-100
         b-form-group.w-100.mb-0
           //- b-input.aino-search-rounded(type='text' placeholder="文作查詢" @keydown.enter='search')
           b-input.mr-2.aino-search-rounded(type='text' placeholder="文作查詢")
           b-button(pill)
-            b-icon-search
+            b-icon-search(:class="{iconDark:user.themeSwitcher, light:!user.themeSwitcher}")
 
   b-row.my-0
     b-col.p-0(cols='9')
-      b-container#novelslist.mb-5.pb-5(fluid)
+      b-container#novelslist.mb-5.pb-5(fluid :class="{whiteBoardDark:user.themeSwitcher, light:!user.themeSwitcher}")
         b-row
           b-col.mt-3(cols='12')
-            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter === ''") 全部
-            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter !== ''") {{ this.filter }}
+            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter === ''" :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 全部
+            .w-25.h-100.m-0.h1.type.aino-bg-wood(v-if="this.filter !== ''" :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") {{ this.filter }}
           b-col.d-flex.justify-content-end(cols='12')
             .overflow-auto
               b-pagination(:per-page='perPage' :total-rows='rows' v-model="page" aria-controls='novelslistpage')
@@ -38,7 +38,7 @@ b-container#MNovels(fluid)
           //- b-col(cols='12')
           //-   b-table(:items="items" :per-page="perPage" :current-page="page")
     b-col(cols='3')
-      #createrlist
+      #createrlist(:class="{whiteBoardDark:user.themeSwitcher, light:!user.themeSwitcher}")
         b-navbar.novels-nav-border
           b-navbar-nav.w-100.d-flex.justify-content-around
             b-nav-item.aino-bg-third(@click='Ccreater') 推薦作者
@@ -122,4 +122,7 @@ export default {
 <style lang="scss">
 @import '../../scss/aino-style.scss' ;
 
+.aino123 {
+  background: red !important;
+}
 </style>

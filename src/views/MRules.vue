@@ -8,14 +8,14 @@ b-container#MRules.my-5.kiteiheight.h-md-0
       b-nav-item.ml-md-5.mt-2.mt-md-0.rulesbtn.aino-rounded(@click='wreport') 騷擾及申訴
   b-container(fuild)
     b-row
-      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='novelRule')
-        | 88888
-      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='siteRule')
-        | 77777
-      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='accountProblem')
-        | 44444
-      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='report')
-        | 11111
+      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='novelRule' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
+        h4 88888
+      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='siteRule' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
+        h4 77777
+      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='accountProblem' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
+        h4 44444
+      b-col.px-4.py-4.white-board.bg-white.aino-rounded(v-if='report' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
+        h4 11111
 </template>
 
 <script>

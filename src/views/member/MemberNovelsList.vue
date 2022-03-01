@@ -1,6 +1,6 @@
 <template lang="pug">
 b-container#membernovelsList.mt-5
-  b-table(striped hover :items='novelsFilterMemberNovelsList' :fields='fields' ref='table')
+  b-table(striped :hover='!user.themeSwitcher' :items='novelsFilterMemberNovelsList' :fields='fields' ref='table' :class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style="height: 50px;")
     template(#cell(edit)='data')
@@ -16,6 +16,9 @@ b-container#membernovelsList.mt-5
     @hidden="resetForm"
     :ok-disabled="modalSubmitting"
     :cancel-disabled="modalSubmitting"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     img-inputer(
       accept="image/*"

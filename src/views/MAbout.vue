@@ -4,13 +4,13 @@ b-container#MAbout.mt-5.px-0.h-100.d-flex.justify-content-center.align-items-cen
     b-row.d-flex
       b-col(md='4')
         img.border-top(src='https://picsum.photos/500/500/?radom=4')
-      b-col.bg-white.py-4.px-4.mb-5.mb-md-0.border-bottom(md='8')
+      b-col.bg-white.py-4.px-4.mb-5.mb-md-0.border-bottom(md='8' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
         .h3 為何會架設Mono‘s Archive?
         .h5 123456
     b-row.mt-5.d-flex.flex-md-row-reverse
       b-col(md='4')
         img.border-top.reverse-top(src='https://picsum.photos/500/500/?radom=7')
-      b-col.bg-white.py-4.px-4.mb-5.mb-md-0.border-bottom.reverse-bottom(md='8')
+      b-col.bg-white.py-4.px-4.mb-5.mb-md-0.border-bottom.reverse-bottom(md='8' :class="{labelDark:user.themeSwitcher, textDark:user.themeSwitcher, light:!user.themeSwitcher}")
         .h3 Mono‘s Archive的由來?
         .h5 123456
 </template>

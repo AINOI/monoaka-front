@@ -1,8 +1,8 @@
 <template lang="pug">
 b-container#adminnovelsList.my-5
   b-row.mb-5
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 文作管理
-  b-table(striped hover :items='adminnovels' :fields='fields' ref='table')
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 文作管理
+  b-table(striped :hover='!user.themeSwitcher' :items='adminnovels' :fields='fields' ref='table' :class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
     template(#cell(image)='data')
       img(v-if='data.item.image' :src='data.item.image' style="height: 50px;")
     template(#cell(publishState)='data')
@@ -22,6 +22,9 @@ b-container#adminnovelsList.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok="updatePublish(false)"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.text-center 是否下架此篇文作?
 
@@ -33,6 +36,9 @@ b-container#adminnovelsList.my-5
     ok-variant='success'
     cancel-variant='danger'
     @ok="updatePublish(true)"
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.text-center 是否重新上架此篇文作?
 
@@ -44,6 +50,9 @@ b-container#adminnovelsList.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok='deleteNovels'
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.deleteSignal.mx-auto.my-3
       div.deleteSignalText !

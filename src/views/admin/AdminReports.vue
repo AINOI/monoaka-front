@@ -1,8 +1,8 @@
 <template lang="pug">
 b-container#adminreports.my-5
   b-row.mb-5
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 問題回報管理
-  b-table(striped hover :items='reports' :fields='fields' ref='table')
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 問題回報管理
+  b-table(striped :hover='!user.themeSwitcher' :items='reports' :fields='fields' ref='table' :class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
     template(#cell(processState)='data')
       | {{ data.item.processed ? '已處理完成' : '尚未處理' }}
     template(#cell(detail)='data')
@@ -20,6 +20,9 @@ b-container#adminreports.my-5
     cancel-variant='danger'
     @ok='reportsState(true)'
     @cancel='reportsState(false)'
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     b-row.border-bottom
       b-col.d-flex.h5(cols='12')
@@ -40,7 +43,7 @@ b-container#adminreports.my-5
     b-row.mt-5
       b-col.h5(cols='12')
         | 問題敘述:
-        .reportTextBox.px-3.py-3.mt-3 {{ this.form.reportText }}
+        .reportTextBox.px-3.py-3.mt-3(:class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}") {{ this.form.reportText }}
 
   b-modal#modal-adminDeleteReports(
     size="lg"
@@ -50,6 +53,9 @@ b-container#adminreports.my-5
     ok-variant='danger'
     cancel-variant='success'
     @ok='deleteReports'
+    :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+    :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
   )
     .h2.deleteSignal.mx-auto.my-3
       div.deleteSignalText !

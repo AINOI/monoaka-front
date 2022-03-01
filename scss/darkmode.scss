@@ -1,0 +1,86 @@
+.dark {
+  background: #111111 !important;
+  transition: 0.3s;
+}
+.navDark {
+  background: #333333 !important;
+  transition: 0.3s;
+  a {
+    color: #ffffff !important;
+  }
+}
+.footerDark {
+  background: #333333 !important;
+  transition: 0.3s;
+}
+.labelDark {
+  background: #555555 !important;
+  transition: 0.3s;
+}
+.btnDark {
+  background: #555555 !important;
+  transition: 0.3s;
+  &:hover {
+    background: #444444 !important;
+  }
+}
+.whiteBoardDark {
+  background: #272728 !important;
+  transition: 0.3s;
+  a {
+    color: #ffffff !important;
+  }
+}
+.cardDark {
+  background: #333333 !important;
+  transition: 0.3s;
+}
+.iconDark {
+  color: #ffffff !important;
+  transition: 0.3s;
+}
+.textDark {
+  color: #ffffff !important;
+  transition: 0.3s;
+  &:hover {
+    color: #ffffff !important;
+    transition: 0.3s;
+  }
+}
+
+.textSecondDark {
+  color: #cfcfcf !important;
+  transition: 0.3s;
+}
+
+.modalDark {
+  background: #474747 !important;
+  transition: 0.3s;
+  color: white !important;
+  button {
+    color: white !important;
+  }
+}
+.novelBtnDark {
+  transition: 0.3s;
+  a {
+    color: white !important;
+  }
+  &:hover {
+    border-color: white !important;
+  }
+}
+.darkModeSwitcher {
+  .custom-control-input:checked ~ .custom-control-label::before {
+    color: #444444;
+    border-color: #5f5f5f;
+    background-color: #5f5f5f;
+  }
+  .custom-control-input:focus ~ .custom-control-label::before {
+    box-shadow: (0 0 0 0.2rem rgba(40, 40, 40, 0.5)) !important;
+  }
+}
+
+.light {
+  transition: 0.3s;
+}

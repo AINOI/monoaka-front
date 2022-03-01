@@ -1,10 +1,10 @@
 <template lang="pug">
 b-container#memberinfo
   b-row
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 資訊更新
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 資訊更新
   b-form
     b-row.my-5
-      b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='12') 創作者頭貼
+      b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='12' :class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}") 創作者頭貼
         b-form-group.mt-3.w-100.d-flex.justify-content-center
           img-inputer.circle(
             accept='image/*'
@@ -16,7 +16,7 @@ b-container#memberinfo
             placeholder="上傳大頭貼"
             :max-size="1024"
             exceedSizeText='文件大小不能超過')
-      div.text-white.aino-rounded.aino-bg-primary.w-100
+      div.text-white.aino-rounded.aino-bg-primary.w-100(:class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}")
         b-row.my-5
           b-col.d-flex(cols='12')
             .h3.mr-3 創作者名稱:

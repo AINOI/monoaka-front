@@ -3,7 +3,7 @@ b-container#MReport
   b-row
     b-col.h1.rounded.text-white.text-center.py-3.aino-bg-problem.aino-rounded(cols='12') 問題回報
   b-form
-    b-row
+    b-row(:class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
       //- nickname isLogin
       b-col.d-flex.align-items-center(cols='12' v-if='user.isLogin')
         .aino-fs.mr-3 創作者名稱:

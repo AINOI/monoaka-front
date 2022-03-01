@@ -1,7 +1,7 @@
 <template lang="pug">
 b-container#admincarousel.my-5
   b-row.mb-5
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 主頁輪播圖管理
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 主頁輪播圖管理
   b-container#carouselChange(fluid)
     b-row
       b-col.add.mb-5(cols='4')
@@ -18,6 +18,9 @@ b-container#admincarousel.my-5
               cancel-variant='success'
               @ok='deleteCarousel(image._id)'
               :id='"modal-delete" + image._id'
+              :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+              :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+              :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
             )
               .h2.deleteSignal.mx-auto.my-3
                 div.deleteSignalText !
@@ -32,6 +35,9 @@ b-container#admincarousel.my-5
       title='新增主頁輪播圖'
       ok-variant='success'
       cancel-variant='danger'
+      :header-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+      :body-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
+      :footer-class="{modalDark:user.themeSwitcher, light:!user.themeSwitcher}"
     )
       b-row
         b-col.d-flex.justify-content-center.align-items-center(cols='12')

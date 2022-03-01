@@ -2,7 +2,7 @@
 #membernovelsWrite.mt-5
   b-container.border-top
     b-form
-      b-row.my-5
+      b-row.my-5(:class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
         b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='12') 文作封面
           b-form-group.mt-3.w-100.d-flex.justify-content-center
             img-inputer(

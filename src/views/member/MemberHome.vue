@@ -1,7 +1,7 @@
 <template lang="pug">
-b-container#memberhome
+b-container#memberhome(:class="{textDark:user.themeSwitcher, light:!user.themeSwitcher}")
   b-row
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 創作者資訊
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 創作者資訊
   b-row.mt-5.border-bottom
     b-col.d-flex.flex-column.align-items-center.h2.mb-5(cols='3')
       | 創作者頭貼
