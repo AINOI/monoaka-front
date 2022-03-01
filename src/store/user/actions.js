@@ -73,3 +73,22 @@ export const getInfo = async ({ commit, state }) => {
     commit('logout')
   }
 }
+
+export const updateTheme = async ({ commit, state }, data) => {
+  try {
+    await api.patch('/users/themeswitch', { themeSwitcher: data }, {
+      headers: {
+        authorization: 'Bearer ' + state.token
+      }
+    })
+    console.log(data)
+  } catch (error) {
+    swal.fire({
+      icon: 'error',
+      title: '錯誤',
+      text: 'none'
+    })
+    console.log(error)
+  }
+  commit('updateTheme', data)
+}
