@@ -6,7 +6,7 @@ b-container#novelpage.bg-white.aino-rounded.mb-5(:class="{whiteBoardDark:user.th
       b-link.ml-3(:to='"/memberothers/" + this.authorId') {{ author }}
     b-col.font-second.h4(cols='12' :class="{textSecondDark:user.themeSwitcher, light:!user.themeSwitcher}") 文作分類: {{ novelType }}
     b-col(cols='12' v-if='user.isLogin')
-      button.aino-btn-wood.btn-md.mt-3 Like!
+      button.aino-btn-wood.btn-md.mt-3(:class="{btnDark:user.themeSwitcher, light:!user.themeSwitcher}") Like!
   b-row.mb-5.pb-5
     b-col.mt-5.px-5(cols='12' v-html="text")
     //- b-col.h5.p-0(cols='12')

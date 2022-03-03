@@ -35,6 +35,12 @@ export default {
 
 <style lang="scss">
 .card-img-left{
+  min-width: 400px;
   object-fit: cover !important;
+}
+
+.summary-height {
+  height: 50px;
+  overflow-y: hidden;
 }
 </style>

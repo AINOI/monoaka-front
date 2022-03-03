@@ -9,6 +9,8 @@ b-container(fluid)
 </template>
 
 <script>
+import arrayShuffle from 'array-shuffle'
+
 export default {
   data () {
     return {
@@ -18,7 +20,7 @@ export default {
   async created () {
     try {
       const { data } = await this.api.get('/novels/')
-      this.NnovelOsusume = data.result
+      this.NnovelOsusume = arrayShuffle(data.result)
     } catch (error) {
       console.log(error.response.data.message)
     }

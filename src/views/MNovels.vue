@@ -122,7 +122,4 @@ export default {
 <style lang="scss">
 @import '../../scss/aino-style.scss' ;
 
-.aino123 {
-  background: red !important;
-}
 </style>

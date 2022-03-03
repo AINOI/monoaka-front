@@ -1,7 +1,7 @@
 <template lang="pug">
 b-container#memberothernovels
   b-row
-    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12') 創作者作品列表
+    b-col.h1.rounded.text-white.text-center.py-3.aino-bg-primary.aino-rounded(cols='12' :class="{labelDark:user.themeSwitcher, light:!user.themeSwitcher}") 創作者作品列表
   b-row
     b-col(cols='12' v-for='novel in memberOthersNovelsFilter' :key='novel._id')
         NovelsCard(:novel='novel')
